@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello WebSocket</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/chat.js"></script>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-12" id = "table" style="width:200%; height:600px; overflow:auto">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                </thead>
+                <tbody id="greetings">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        var userName=[[${user.name}]];
+        var subscribeName=[[${subscribe}]];
+        var subscribeId=[[${subscribeId}]];
+
+        /*]]*/
+    </script>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="message"></label>
+                    <input type="text" id="message" class="form-control" placeholder="Your name here...">
+                </div>
+                <button id="send" class="btn btn-default" type="submit">Send</button>
+                <div class="form-group">
+                    <label for="invite"></label>
+                    <input type="text" id="invite" class="form-control" placeholder="Invite">
+                </div>
+                <button id="send1" class="btn btn-default" type="submit">Invite</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>홈 화면</h2>
+    </div>
+
+    <h4 class="mb-3" th:text="|로그인: ${user.name}|"></h4>
+
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/logout}" method="post">
+                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='home.html'" type="submit">
+                    로그아웃
+                </button>
+            </form>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-dark btn-lg" type="button"
+                    th:onclick="|location.href='@{/subscribes/add}'|">
+                채팅 추가
+            </button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="subscribeList">
+        <div class="col">
+            <tr th:each="subscribe:${user.subscribeList}">
+                <td>
+                   <a th:href="@{/chat/{sub}(sub=${subscribe.id})}">
+                            <b th:field th:text="${subscribe.name}" ></b>
+                </a>
+                </td>
+                <hr class="my-4">
+            </tr>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+</body>
+</html>
