@@ -24,6 +24,7 @@ public class TestData {
         user.addSubscribe("subscribe2");
         user.addSubscribe("subscribe3");
 
+
         User user1 = new User();
         user1.setLoginId("user2");
         user1.setPassword("1234");
